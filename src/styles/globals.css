@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+
+@theme {
+  /* === Brand Colors === */
+  --color-cream:         #F7F1E8;
+  --color-cream-soft:    #FBF7F0;
+  --color-cream-dark:    #EDE4D3;
+  --color-brown:         #5F4633;
+  --color-brown-soft:    #7A5A3E;
+  --color-green:         #2D6A4F;
+  --color-green-light:   #52B788;
+  --color-green-dark:    #1B4332;
+  --color-yellow:        #F4C95D;
+  --color-pink:          #F3A5B5;
+
+  /* === Product Variant Colors === */
+  --color-original:      #C8A96E;
+  --color-matcha:        #7BC67E;
+  --color-taro:          #B085C5;
+  --color-strawberry:    #F7A8B8;
+  --color-chocolate:     #8B4513;
+
+  /* === Typography === */
+  --font-display: "Plus Jakarta Sans Variable", sans-serif;
+  --font-body:    "Inter", sans-serif;
+
+  /* === Radius === */
+  --radius-card:   1.5rem;
+  --radius-pill:   9999px;
+
+  /* === Shadows === */
+  --shadow-card:  0 4px 24px -4px rgba(95,70,51,0.12);
+  --shadow-hover: 0 12px 40px -8px rgba(95,70,51,0.20);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-brown);
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); }
+html { scroll-behavior: smooth; }
+
+/* Radix Accordion animations */
+@keyframes accordion-down {
+  from { height: 0; opacity: 0; }
+  to   { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to   { height: 0; opacity: 0; }
+}
+.animate-accordion-down { animation: accordion-down 0.25s ease-out; }
+.animate-accordion-up   { animation: accordion-up 0.25s ease-out; }
+
+/* Hide scrollbar for carousels */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* Focus visible — keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip to main content (screen readers + keyboard) */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--color-green);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 0.5rem 0;
+}
+.skip-to-main:focus { left: 0; }
